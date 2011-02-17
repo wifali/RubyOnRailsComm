@@ -1,8 +1,19 @@
 class PagesController < ApplicationController
-  def startseite
+  
+  def home
+    @title = "Home"
   end
 
-  def kontakt
+  def contact
+    @title = "Contact"
   end
 
+  def sitemap
+    @title = "Sitemap"
+  end
+ 
+  def references
+    @title = "References"
+  end
+  
 end

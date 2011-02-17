@@ -1,6 +1,10 @@
 RailsTutorial::Application.routes.draw do
-  
-  get "pages/startseite"
-  get "pages/kontakt"
 
+    
+  root :to => 'pages#home'
+  
+  match '/contact', :to => 'pages#contact'
+  match '/sitemap',   :to => 'pages#sitemap'
+  match '/references',    :to => 'pages#references'
+  
 end

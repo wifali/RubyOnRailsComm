@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>RailsTutorial</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
+  <head>
+    <title>Rails Tutorial | <%= @title %></title>
+    <%= csrf_meta_tag %>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->    
+    <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
+    <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
+    <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
+    <%= stylesheet_link_tag 'custom', :media => 'screen' %>
+  </head>
+  <body>
+    <div class="table">
+      <div class="row">
+        <div class="cell">
+          <%= image_tag("logo.png", :alt => "Sample App", :class => "logo") %>
+        </div>
+        <div class="cell nav ">
+          <div class = "justNav round siteA">
+          <%= link_to "Home", root_path %><br/>
+          <%= link_to "Sitemap", sitemap_path  %><br/>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="section round">
+      <%= yield %>
+    </div>
 
-<%= yield %>
-
-</body>
+    <div class="footer round siteA">
+      <%= link_to "Contact", contact_path %>
+      <%= link_to "References", references_path %> 
+    </div>
+  </body>
 </html>
