@@ -7,6 +7,16 @@ of a model (<em>Example: User</em>).
 
 <h2>Tests</h2>
 
+<h3>Model</h3>
+
+<%=raw show_file("spec / models / user_spec.rb" , "
+.
+.
+class User < ActiveRecord::Base
+  attr_accessible :email, :account_name
+end
+") %>
+
 <h3>Views</h3>
 
 <h2>Controller</h2>
