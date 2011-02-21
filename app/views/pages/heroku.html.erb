@@ -1,1 +1,21 @@
 <h1>Heroku</h1>
+
+<p>
+
+<h3>Create and rename a heroku project</h3>
+
+<%=raw show_shell "heroku keys:add" %>
+
+<%=raw show_shell "heroku create" %>
+
+<%=raw show_shell " heroku rename subdomainname" %>
+
+<h3>Push code, migrate and push database</h3>
+
+<%=raw show_shell "git push heroku master" %>
+
+<%=raw show_shell "heroku rake db:migrate" %>
+
+<%=raw show_shell "heroku db:push" %>
+
+</p>

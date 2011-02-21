@@ -32,6 +32,7 @@
         </div>
         <div class="cell nav ">
           <div class = "justNav3 round siteA">
+            <%= link_to "Projectwide stuff", projectwide_stuff_path %><br/>
             <%= link_to "Static Pages", static_pages_path %><br/>
             <%= link_to "Model", models_path%><br/>
           </div>
@@ -43,7 +44,7 @@
     </div>
 
     <div class="footer round siteA">
-      <%= link_to "Contact", contact_path %>
+      <%= link_to "Contact", contact_path %> |
       <%= link_to "References", references_path %> 
     </div>
     <%= debug(params) if Rails.env.development? %>
