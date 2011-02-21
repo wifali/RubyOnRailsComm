@@ -1,10 +1,23 @@
 RailsTutorial::Application.routes.draw do
 
+  resources :users
     
+  get "users/create"
+  get "users/destroy"
+  #get "users/show"
+
   root :to => 'pages#home'
   
   match '/contact', :to => 'pages#contact'
   match '/sitemap',   :to => 'pages#sitemap'
   match '/references',    :to => 'pages#references'
+  match '/git',    :to => 'pages#git'
+  match '/heroku',    :to => 'pages#heroku'
+  match '/static_pages',    :to => 'pages#static_pages'
+  match '/models',    :to => 'pages#models'
+  match '/other_tools',    :to => 'pages#other_tools'
+  match '/projectwide_stuff',    :to => 'pages#projectwide_stuff'
   
+  match '/show',  :to => 'users#show'
+
 end

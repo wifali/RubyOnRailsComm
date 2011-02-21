@@ -1,0 +1,34 @@
+<h1> Other Tools </h1> 
+
+<h2> annotate </h2> 
+
+<p>
+annotate is a useful tool that annotates models with
+the members of the class and the corresponding attributes
+of the database table.
+</p>
+
+<h3> install </h3> 
+
+<%=raw show_file("Gemfile" , "
+.
+.
+group :development do
+  .
+  .
+  gem 'annotate-models', '1.0.4'
+end
+
+.
+.
+") %>
+
+<%=raw show_shell "bundle install"%>
+
+<h3> use </h3> 
+
+<%=raw show_shell "annotate"%>
+
+
+
+

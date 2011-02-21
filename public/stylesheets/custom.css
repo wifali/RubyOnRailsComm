@@ -9,10 +9,13 @@ h1 {
 
 h2 {
   font-size:18px;
+  margin-bottom:4px;
+  font-weight:bold;
 }
 
 h3 {
   font-size:16px;
+  font-weight:bold;
 }
 
 
@@ -48,7 +51,7 @@ a:visited {
 /*Logo */
 
 .logo {
-  margin-right:30px;
+  margin-right:18px;
 }
 
 /* Navigation */
@@ -57,11 +60,19 @@ a:visited {
   vertical-align:top;
   white-space:nowrap;
   padding:0px;
-
+  padding-right:10px;
 }
 
 .justNav {
   background-color:#E2FF5F;
+}
+
+.justNav2 {
+  background-color:#FFEB31;
+}
+
+.justNav3 {
+  background-color:#E7E6C5;
 }
 
 /* section */
@@ -72,6 +83,7 @@ a:visited {
   padding: 20px;
   background: #D8D9FF;
   display:block;
+  height:auto;
 }
 
 /* Footer */
@@ -91,6 +103,7 @@ a:visited {
   border-radius:         10px;
 }
 
+
 /* table*/
 
 .table {
@@ -105,3 +118,63 @@ a:visited {
   display: table-cell;
 }
 
+/* Textformatting */
+
+.shell {
+  background:white;
+  width:auto;
+  padding:7px;
+  display:inline;
+  border-width:2px;
+  border-style:solid;
+  border-color:#0013A0;
+  font-family: Monospace;
+  color:#D0660F;
+  font-weight:bold;
+  letter-spacing:1px;
+  margin-bottom:20px;
+}
+
+.entity {
+  margin-bottom:20px;
+  height:auto;
+  display:block;
+}
+
+.fileHeader {
+  color:#35383B;
+  font-weight:bold;
+  font-size:13px;
+  padding-bottom:6px;
+  display:inline;
+  border-left: dotted 1px #35383B;
+  border-right: dotted 1px #35383B;
+  border-top: dotted 1px #35383B;
+  padding-left:4px;
+  padding-right:4px;
+  padding-top:2px;
+}
+
+.addToFile {
+  background:white;
+  width:auto;
+  display:inline-block;
+  padding:7px;
+  border-width:2px;
+  border-style:dashed;
+  border-color:#054B0B;
+  color:#000;
+  letter-spacing:1px;
+  margin-top:4px;
+}
+
+.preFile {
+  font-size:12px;
+  line-height:14px;
+  margin:0px;
+}
+
+.ppp {
+  display:block;
+  color:red;
+}

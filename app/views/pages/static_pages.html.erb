@@ -1,0 +1,84 @@
+<h1>Static Pages</h1>
+
+<p>
+To create and test static pages is one of the easiest task in Rails. 
+It takes only four steps:
+</p>
+
+<h2>0. Test</h2>
+
+<h3>0.1 Define a spec-method</h3>
+
+<%=raw show_file("spec / spec_helper.rb" , "
+.
+.
+def test_success_and_title name, title = name.capitalize.gsub(/_/,\" \") 
+  describe \"GET '\#{name}'\" do
+    it \"should be successful\" do
+      get name
+      response.should be_success
+    end
+
+    it \"should have the right title\" do
+      get name
+      response.should have_selector(\"title\", :content => title)
+    end
+  end
+end
+.
+.
+") %>
+
+<h3>0.2 Write failing test</h3>
+
+<%=raw show_file("app / views / pages / new_site.html.erb" , "
+require 'spec_helper'
+
+describe PagesController do
+  
+  render_views
+  .
+  .
+  test_success_and_title 'new_site'
+  .
+  .
+end
+") %>
+
+<h2>1. Create file</h2>
+
+<%=raw show_file("app / views / pages / new_site.html.erb" , "
+&lt;h1&gt; New Site &lt;/h1&gt;") %>
+
+<h2>2. Add route</h2>
+
+<!--<%=raw show_shell("humabal") %>-->
+<%=raw show_file("config / routes.rb" , "
+.
+.
+  match '/new_site', :to => 'pages#new_site'
+.
+.
+") %>
+
+<h2>3. Add controller</h2>
+
+<%=raw show_file("app / controllers / pages_controller.rb" , "
+.
+.
+  def new_site
+    @title = \"New site\"
+  end
+.
+.
+") %>
+
+<h2>4. Add link somewhere</h2>
+
+<%=raw show_file("app / views / someSite.html.erb" , "
+.
+.
+<\%= link_to \"New Site\", new_site_path \%&gt;
+.
+.
+") %>

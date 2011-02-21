@@ -13,7 +13,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 end
 
-def test_success_and_title name, title = name.capitalize 
+def test_success_and_title name, title = name.capitalize.gsub(/_/," ") 
   describe "GET '#{name}'" do
     it "should be successful" do
       get name

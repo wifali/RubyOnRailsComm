@@ -1,0 +1,120 @@
+<h1>Model</h1>
+
+<p>
+This document describes the testing and creation
+of a model (<em>Example: User</em>).
+</p>
+
+<h2>Tests</h2>
+
+<h3>Views</h3>
+
+<h2>Controller</h2>
+
+<h3>Create</h3>
+
+<p>
+At first you create the controller. It's actually easy to explain: It <em>controls</em> a model.
+</p>
+
+<%=raw show_shell "rails generate controller Users create destroy show"%>
+
+<p>
+After that we should delete the spec/views and spec/helpers dirs, because 
+<%=raw link_to_extern "http://ruby.railstutorial.org/chapters/filling-in-the-layout#sec:users_controller", "we don't like them"%>.
+</p>
+
+<%=raw show_shell "rm -rf spec/views" %>
+
+<%=raw show_shell "rm -rf spec/helpers" %>
+
+<h3>Edit</h3>
+
+
+<h2>Create the model</h2>
+
+<p>
+After that you create the model. A Rails model a basically a datastructure with the ability to synchonize
+with a relational database (<%=raw link_to_wiki("Object-relational_mapping", "Object relational mapping")%>).
+</p>
+
+<%=raw show_shell "rails generate model User email:string account_name:string"%>
+
+<h3>Migrate</h3>
+
+<%=raw show_shell "rake db:migrate"%>
+
+<%=raw show_shell "rake db:test:prepare"%>
+
+<h2>Specifying the model</h2>
+
+<h3>Restrict Access</h3>
+
+<p>
+In most cases it makes sense to restrict attributes by specifying exactly which attributes are 
+accessible, hence specifying implicitly the non-accessible attributes.
+</p>
+
+<%=raw show_file("Gemfile" , "
+.
+.
+class User < ActiveRecord::Base
+  attr_accessible :email, :account_name
+end
+") %>
+
+<h3>Validating presence, length, etc.</h3>
+
+<p>
+The following code shows how to ensure the presence of attributes, limit length, guarantee a
+certain pattern and uniqueness. This prevents incorrect states of the 
+<%=raw link_to_wiki "Data_model", "data model"%>. 
+</p>
+
+<%=raw show_file("app / models / user.rb" , "
+.
+.
+class User < ActiveRecord::Base
+  .
+  . 
+  email_regex = /\\A[\\w+\\-.]+@[a-z\\d\\-.]+\\.[a-z]+\\z/i
+
+  validates :account_name, :presence => true,
+            :length   => { :maximum => 10 },
+            :uniqueness => true
+  validates :email, :presence => true,
+            :format   => { :with => email_regex },
+            :uniqueness => { :case_sensitive => false }
+end
+") %>
+
+<h2>Change the model afterwards</h2>
+
+<p>
+The above validation of uniqueness is actually imperfect (see: 
+<%=raw link_to_extern "http://ruby.railstutorial.org/chapters/modeling-and-viewing-users-one#sec:the_caveat", "The uniqueness caveat" %>),
+but luckily it's a great opportunity to show an afterwards modification of the model.
+</p>
+
+<%=raw show_shell "rails generate migration add_uniqueness_indexes"%>
+
+
+<%=raw show_file("app / models / user.rb" , "
+class AddUniquenessIndexes < ActiveRecord::Migration
+  def self.up
+    add_index :users, :account_name, :unique => true
+    add_index :users, :email, :unique => true
+  end
+
+  def self.down
+    remove_index :users, :account_name
+    remove_index :users, :email
+  end
+end
+") %>
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+<h1>Projectwide stuff</h1>
+
+<h2>Show Debug information</h2>
+
+<p>
+(see also: 
+<%=raw link_to_extern "http://ruby.railstutorial.org/chapters/modeling-and-viewing-users-one#sec:rails_environments","Debug and rails environments" %>)
+</p>
+
+<%=raw show_file "app / views / layouts / application.html.erb", %(
+.
+.
+    &lt;\%= debug(params) if Rails.env.development? \%&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+)%>

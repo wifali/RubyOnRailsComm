@@ -15,13 +15,26 @@
     <div class="table">
       <div class="row">
         <div class="cell">
-          <%= image_tag("logo.png", :alt => "Sample App", :class => "logo") %>
+          <%= link_to image_tag("logo2.png", :alt => "Logo", :class => "logo"), root_path %>
         </div>
         <div class="cell nav ">
           <div class = "justNav round siteA">
-          <%= link_to "Home", root_path %><br/>
-          <%= link_to "Sitemap", sitemap_path  %><br/>
+            <%= link_to "Home", root_path %><br/>
+            <%= link_to "Sitemap", sitemap_path%><br/>
+          </div>
         </div>
+        <div class="cell nav ">
+          <div class = "justNav2 round siteA">
+            <%= link_to "Git", git_path %><br/>
+            <%= link_to "Heroku", heroku_path%><br/>
+            <%= link_to "Other Tools", other_tools_path%><br/>
+          </div>
+        </div>
+        <div class="cell nav ">
+          <div class = "justNav3 round siteA">
+            <%= link_to "Static Pages", static_pages_path %><br/>
+            <%= link_to "Model", models_path%><br/>
+          </div>
         </div>
       </div>
     </div>
@@ -33,5 +46,6 @@
       <%= link_to "Contact", contact_path %>
       <%= link_to "References", references_path %> 
     </div>
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
